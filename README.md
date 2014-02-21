@@ -2,17 +2,17 @@ ZPanelX - Auto logout users if they're idle/no-activities for specified time
 
 INSTALLATION / CONFIGURATION
 ----------------------------
-(1) UPLOAD auto-logout.css into 'css' folder of your theme
-    path should be something like: /etc/zpanel/panel/etc/styles/<your-theme-name>/css/
+(1) UPLOAD auto-logout.css into 'global-css' folder of your theme
+    path should be something like: /etc/zpanel/panel/etc/styles/<your-theme-name>/global-css/
 
-(2) UPLOAD jquery.idletimeout.js and jquery.idletimer.js into 'inc' folder of your theme
-    path should be something like: /etc/zpanel/panel/etc/styles/<your-theme-name>/inc/
+(2) UPLOAD jquery.idletimeout.js and jquery.idletimer.js into 'js' folder of your theme
+    path should be something like: /etc/zpanel/panel/etc/styles/<your-theme-name>/js/
 
 (3) ADD following code into master.ztml of your theme
 
     In <head> section,
     -----
-    <link href="css/auto-logout.css" rel="stylesheet" type="text/css" />
+	<link href="<# ui_tpl_assetfolderpath #>global-css/auto-logout.css" rel="stylesheet">
     -----
 
     At bottom of file, before </body>
@@ -25,8 +25,8 @@ INSTALLATION / CONFIGURATION
         <p>Do you want to continue your session?</p>
     </div>
 
-    <script src="<# ui_tpl_assetfolderpath #>/inc/jquery.idletimer.js" type="text/javascript"></script>
-    <script src="<# ui_tpl_assetfolderpath #>/inc/jquery.idletimeout.js" type="text/javascript"></script>
+    <script src="<# ui_tpl_assetfolderpath #>/js/jquery.idletimer.js" type="text/javascript"></script>
+    <script src="<# ui_tpl_assetfolderpath #>/js/jquery.idletimeout.js" type="text/javascript"></script>
     <script type="text/javascript">
     // setup the dialog
     $("#dialog").dialog({
