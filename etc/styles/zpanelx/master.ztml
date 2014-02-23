@@ -112,7 +112,7 @@ keepAliveURL: '#',
 serverResponseEquals: 'OK',
 onTimeout: function(){
 $(this).slideUp();
-window.location = "/?logout";
+window.location = "./?logout";
 },
 onIdle: function(){
 $(this).slideDown(); // show the warning bar
