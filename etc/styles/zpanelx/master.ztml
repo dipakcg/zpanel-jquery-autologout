@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>ZPanel &gt; <# ui_tpl_username #> - <# ui_tpl_domainname #></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Web Hosting Control Panel">
@@ -266,8 +267,7 @@
         <div class="clearfix"></div>
 
       </div><!--/page-content-->
-	  
-    <div id="dialog" title="Your session is about to expire!">
+	  <div id="dialog" title="Your session is about to expire!">
         <p>
     	    <span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 50px 0;"></span>
             You will be logged off in <span id="dialog-countdown" style="font-weight:bold"></span> seconds.
@@ -301,7 +301,7 @@
 
     // start the idle timer plugin
     $.idleTimeout('#dialog', 'div.ui-dialog-buttonpane button:first', {
-        idleAfter: 300,
+        idleAfter: 500,
         pollingInterval: 30,
         serverResponseEquals: 'OK',
         onTimeout: function(){
@@ -315,7 +315,7 @@
         }
     });
     </script>
-		
+	
     </div>
     <div id="footer" >Copyright &copy; 2004-<# ui_tpl_year #> <a href="http://www.zpanelcp.com/" target="_blank">ZPanel Project</a>.</div>
     </div><!-- END CONTAINER -->

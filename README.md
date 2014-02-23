@@ -3,12 +3,13 @@ ZPanelX - Auto logout users if they're idle/no-activities for specified time
 INSTALLATION / CONFIGURATION
 ----------------------------
 (1) UPLOAD auto-logout.css into 'global-css' folder of your theme
-    path should be something like: /etc/zpanel/panel/etc/styles/<your-theme-name>/global-css/
+    path should be something like: /etc/styles/zpanelx/global-css/
 
 (2) UPLOAD jquery.idletimeout.js and jquery.idletimer.js into 'js' folder of your theme
-    path should be something like: /etc/zpanel/panel/etc/styles/<your-theme-name>/js/
+    path should be something like: /etc/styles/<your-theme-name>/js/
 
 (3) ADD following code into master.ztml of your theme
+    path should be something like: /etc/styles/<your-theme-name>/
 
     In <head> section,
     -----
@@ -70,6 +71,6 @@ INSTALLATION / CONFIGURATION
     * User will be considered as idle after 300 seconds(5 minutes) of no movement. Change the value of seconds in "idleAfter: 300" if you want to increase or decrease auto logout time.
 
 
-Comment/Post any issues on my ZPanel Community Profile: http://forums.zpanelcp.com/member.php?13597-Darek
+Comment/Post any issues on my ZPanel Community Profile: http://forums.zpanelcp.com/User-Darek
 
 
