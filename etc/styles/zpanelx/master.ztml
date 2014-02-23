@@ -8,8 +8,8 @@
     <meta name="description" content="Web Hosting Control Panel">
 
     <!-- styles -->
-    <link href="<# ui_tpl_assetfolderpath #>global-css/bootstrap.css" rel="stylesheet">
 	<link href="<# ui_tpl_assetfolderpath #>global-css/auto-logout.css" rel="stylesheet">
+    <link href="<# ui_tpl_assetfolderpath #>global-css/bootstrap.css" rel="stylesheet">
     <link href="<# ui_tpl_csspath #>" rel="stylesheet" type="text/css">
 
     <script src="<# ui_tpl_assetfolderpath #>js/jquery.js"></script>
@@ -93,9 +93,39 @@
 
         <!-- BEGIN PAGE-CONTENT -->
         <div id="page-content" class="col-lg-9">
+		<# ui_tpl_shadowbar #>
+		        <!-- BEGIN ZPANEL-JQERY-AutoLogout-->
+ 
 
-        <# ui_tpl_shadowbar #>
-
+		<div id="idletimeout">
+You will be logged off in <span><!-- countdown place holder --></span>&nbsp;seconds due to inactivity.
+<a id="idletimeout-resume" href="#">Click here to continue using this web page</a>.
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js" type="text/javascript"></script>
+<script src="<# ui_tpl_assetfolderpath #>js/jquery.idletimer.js" type="text/javascript"></script>
+<script src="<# ui_tpl_assetfolderpath #>js/jquery.idletimeout.js" type="text/javascript"></script>
+<script type="text/javascript">
+$.idleTimeout('#idletimeout', '#idletimeout a', {
+idleAfter: 5,
+pollingInterval: 2,
+keepAliveURL: '#',
+serverResponseEquals: 'OK',
+onTimeout: function(){
+$(this).slideUp();
+window.location = "/?logout";
+},
+onIdle: function(){
+$(this).slideDown(); // show the warning bar
+},
+onCountdown: function( counter ){
+$(this).find("span").html( counter ); // update the counter
+},
+onResume: function(){
+$(this).slideUp(); // hide the warning bar
+}
+});
+</script>
+     
         <!-- BEGIN STATSDATA -->
         <div id="stats-data" class="collapse">
           <div id="statsdatawrapper">
@@ -267,55 +297,6 @@
         <div class="clearfix"></div>
 
       </div><!--/page-content-->
-	  <div id="dialog" title="Your session is about to expire!">
-        <p>
-    	    <span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 50px 0;"></span>
-            You will be logged off in <span id="dialog-countdown" style="font-weight:bold"></span> seconds.
-        </p>
-        <p>Do you want to continue your session?</p>
-    </div>
-
-    <script src="<# ui_tpl_assetfolderpath #>js/jquery.idletimer.js" type="text/javascript"></script>
-    <script src="<# ui_tpl_assetfolderpath #>js/jquery.idletimeout.js" type="text/javascript"></script>
-    <script type="text/javascript">
-    // setup the dialog
-    $("#dialog").dialog({
-        autoOpen: false,
-        modal: true,
-        width: 400,
-        height: 200,
-        closeOnEscape: false,
-        draggable: false,
-        resizable: false,
-        buttons: {
-                'Yes, Keep Working': function(){
-                        $(this).dialog('close');
-                },
-                'No, Logoff': function(){
-                        $.idleTimeout.options.onTimeout.call(this);
-                }
-        }
-    });
-    // cache a reference to the countdown element so we don't have to query the DOM for it on each ping.
-    var $countdown = $("#dialog-countdown");
-
-    // start the idle timer plugin
-    $.idleTimeout('#dialog', 'div.ui-dialog-buttonpane button:first', {
-        idleAfter: 500,
-        pollingInterval: 30,
-        serverResponseEquals: 'OK',
-        onTimeout: function(){
-                window.location = "./?logout";
-        },
-        onIdle: function(){
-                $(this).dialog("open");
-        },
-        onCountdown: function(counter){
-                $("#dialog-countdown").html(counter);
-        }
-    });
-    </script>
-	
     </div>
     <div id="footer" >Copyright &copy; 2004-<# ui_tpl_year #> <a href="http://www.zpanelcp.com/" target="_blank">ZPanel Project</a>.</div>
     </div><!-- END CONTAINER -->
