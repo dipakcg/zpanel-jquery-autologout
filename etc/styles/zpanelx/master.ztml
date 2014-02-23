@@ -275,8 +275,8 @@
         <p>Do you want to continue your session?</p>
     </div>
 
-    <script src="<# ui_tpl_assetfolderpath #>/js/jquery.idletimer.js" type="text/javascript"></script>
-    <script src="<# ui_tpl_assetfolderpath #>/js/jquery.idletimeout.js" type="text/javascript"></script>
+    <script src="<# ui_tpl_assetfolderpath #>js/jquery.idletimer.js" type="text/javascript"></script>
+    <script src="<# ui_tpl_assetfolderpath #>js/jquery.idletimeout.js" type="text/javascript"></script>
     <script type="text/javascript">
     // setup the dialog
     $("#dialog").dialog({
